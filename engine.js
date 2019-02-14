@@ -66,14 +66,12 @@ module.exports = function (options) {
           message: 'Write a short, imperative tense description of the change:\n',
           default: options.defaultSubject
         }, {
-          type: 'input',
-          name: 'body',
-          message: 'Provide a longer description of the change: (press enter to skip)\n',
-          default: options.defaultBody
-        }, {
           type: 'confirm',
           name: 'isBreaking',
           message: 'Are there any breaking changes?',
+          when: function(answers) {
+            return answers.type === 'feat';
+          },
           default: false
         }, {
           type: 'input',
@@ -86,6 +84,9 @@ module.exports = function (options) {
           type: 'confirm',
           name: 'isIssueAffected',
           message: 'Does this change affect any open issues?',
+          when: function(answers) {
+            return answers.type === 'fix';
+          },
           default: options.defaultIssues ? true : false
         }, {
           type: 'input',
