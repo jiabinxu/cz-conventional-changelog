@@ -111,9 +111,22 @@ module.exports = function (options) {
         // parentheses are only needed when a scope is present
         var scope = answers.scope.trim();
         scope = scope ? '(' + answers.scope.trim() + ')' : '';
+        var typeMap = {
+          feat:':sparkles:',
+          fix:':bug:',
+          docs:':memo:',
+          style:':lipstick:',
+          refactor:':rocket:',
+          perf:':package:',
+          test:':white_check_mark:',
+          build:':arrow_down:',
+          ci:':robot:',
+          chore:':construction_worker:',
+          revert:':fire:'
+        }
 
         // Hard limit this line
-        var head = (answers.type + scope + ': ' + answers.subject.trim()).slice(0, maxLineWidth);
+        var head = ( typeMap[answers.type] + scope + ': ' + answers.subject.trim()).slice(0, maxLineWidth);
 
         // Wrap these lines at 100 characters
         var body = wrap(answers.body, wrapOptions);
