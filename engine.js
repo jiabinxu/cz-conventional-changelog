@@ -117,9 +117,9 @@ module.exports = function (options) {
           docs:':memo:',
           style:':lipstick:',
           refactor:':rocket:',
-          perf:':package:',
+          perf:':racehorse:',
           test:':white_check_mark:',
-          build:':arrow_down:',
+          build:':package:',
           ci:':robot:',
           chore:':construction_worker:',
           revert:':fire:'
